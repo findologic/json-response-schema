@@ -30,7 +30,16 @@
       "effectiveQuery": "Blubbergurken",
       "totalResults": 1337,
       "requestId": "9cd42225-90d0-4858-bcb6-b05f33d8ec5e",
-      "searchConcept": "Seeds"
+      "searchConcept": "Seeds",
+      "landingpage": {
+        "name": "New arrivals",
+        "url": "https://example.org/new_stuff.html"
+      },
+      "promotion": {
+        "name": "Blubbergurken Brand",
+        "url": "https://example.org/top_brands/Blubbergurken_International_Inc.html",
+        "imageUrl": "https://example.org/top_brands/blubbergurken_international.png"
+      }
     },
     "variant": {
       "name": "sdym",

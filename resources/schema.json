@@ -1,0 +1,364 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FINDOLOGIC Search API JSON response 1.0",
+  "description": "JSON format for search results, filters, and more.",
+  "definitions": {
+    "filterMetadata": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "minLength": 1
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "weight": {
+          "type": "number"
+        },
+        "frequency": {
+          "type": "number"
+        },
+        "colorCode": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "availableFilter": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "index": {
+          "type": "integer",
+          "min": 0,
+          "description": "The configured position of the filter."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "select",
+            "rangeSlider",
+            "color",
+            "label",
+            "image"
+          ]
+        },
+        "selectMode": {
+          "type": "string",
+          "enum": [
+            "single",
+            "multiple"
+          ],
+          "description": "Wheter one or more filter values can be selected at the same time."
+        },
+        "cssClass": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optionally configurable CSS class from Customer Login."
+        },
+        "noAvailableFiltersText": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optionally configurable text intended to be shown in case there are no more filter values available for selection."
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/filterMetadata"
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "displayName",
+        "index",
+        "type"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "request": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 0,
+          "description": "The search term"
+        },
+        "first": {
+          "type": "integer",
+          "min": 0,
+          "description": "Pagination offset."
+        },
+        "count": {
+          "type": "integer",
+          "min": 0,
+          "description": "Items per page."
+        },
+        "serviceId": {
+          "type": "string",
+          "pattern": "^[0-9A-F]{32}$"
+        },
+        "usergroup": {
+          "type": "string",
+          "minLength": 1,
+          "description": "In case usergroups are used and one is set in the query, the one that was used. Only relevant for services with XML export."
+        },
+        "groups": {
+          "type": "array",
+          "minLength": 0,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "In case groups are used and one or more are set in the query, the ones being used. Only relevant for services with CSV export."
+        },
+        "userId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "description": "Anonymous ID of the searching user. Only set if provided."
+        },
+        "order": {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "relevanceBased": {
+              "type": "boolean"
+            },
+            "direction": {
+              "type": "string",
+              "enum": [
+                "ASC",
+                "DESC"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "field",
+            "relevanceBased",
+            "direction"
+          ]
+        },
+        "selectedFilters": {
+          "type": "object",
+          "patternProperties": {
+            "^.*$": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/filterMetadata"
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "query",
+        "first",
+        "count",
+        "selectedFilters",
+        "serviceId",
+        "order"
+      ]
+    },
+    "results": {
+      "type": "object",
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "effectiveQuery": {
+              "type": "string",
+              "minLength": 0,
+              "description": "The query that was actually used to serve the results. Relevant for variants like Smart Did-You-Mean that may override the user query."
+            },
+            "totalResults": {
+              "type": "integer",
+              "min": 0
+            },
+            "requestId": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "description": "Unique ID of the request that was processed for log correlation purposes."
+            },
+            "searchConcept": {
+              "type": "string",
+              "minLength": 1,
+              "description": "In case the search triggers a Search Concept, this is its name."
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "effectiveQuery",
+            "totalResults"
+          ]
+        },
+        "variant": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Name of the search logic variant in use."
+            },
+            "correctedQuery": {
+              "type": "string",
+              "minLength": 1,
+              "description": "In case of Smart Did-You-Mean, the correction of the user query."
+            },
+            "improvedQuery": {
+              "type": "string",
+              "minLength": 1,
+              "description": "In case of Smart Did-You-Mean, a query that was deemed more useful than the user query."
+            },
+            "didYouMeanQuery": {
+              "type": "string",
+              "minLength": 1,
+              "description": "In case of Smart Did-You-Mean, a query related to the user query which one might also be interested in."
+            }
+          },
+          "additionalProperties": true,
+          "required": [
+            "name"
+          ]
+        },
+        "items": {
+          "type": "array",
+          "minLength": 0,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^https?://.*$"
+              },
+              "imageUrl": {
+                "type": "string",
+                "pattern": "^https?://.*$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 0
+              },
+              "highlightedName": {
+                "type": "string",
+                "minLength": 0
+              },
+              "price": {
+                "type": "number"
+              },
+              "ordernumbers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "score": {
+                "type": "number",
+                "min": 0
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 0
+              },
+              "properties": {
+                "type": "object",
+                "properties": {
+                  ".*": {
+                    "type": "string"
+                  }
+                }
+              },
+              "productPlacement": {
+                "type": "string",
+                "minLength": 1,
+                "description": "In case a Product Placement matches the product, this is its name."
+              },
+              "pushRules": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "description": "In one or more Push Rules match a product, these are the names."
+              },
+              "attributes": {
+                "type": "object",
+                "description": "Attribute values that apply to an item, if the attribute was requested via outputAttrib.",
+                "patternProperties": {
+                  "^.*$": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minLength": 0
+                  }
+                }
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "score"
+            ]
+          }
+        },
+        "availableFilters": {
+          "type": "object",
+          "properties": {
+            "main": {
+              "type": "object",
+              "patternProperties": {
+                "^.*$": {
+                  "$ref": "#/definitions/availableFilter"
+                }
+              }
+            },
+            "other": {
+              "type": "object",
+              "patternProperties": {
+                "^.*$": {
+                  "$ref": "#/definitions/availableFilter"
+                }
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "main",
+            "other"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "metadata",
+        "variant",
+        "items",
+        "availableFilters"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "request",
+    "results"
+  ]
+}

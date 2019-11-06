@@ -1,0 +1,22 @@
+{
+  "name": "@findologic/json-response-schema",
+  "version": "0.0.0",
+  "description": "FINDOLOGIC search API response schema",
+  "main": "resources/schema.json",
+  "scripts": {
+    "test": "node --no-warnings test/validate.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/findologic/json-response-schema.git"
+  },
+  "author": "Chris Ortner <c.ortner@findologic.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/findologic/json-response-schema/issues"
+  },
+  "homepage": "https://github.com/findologic/json-response-schema#readme",
+  "devDependencies": {
+    "jsonschema": "^1.2.4"
+  }
+}

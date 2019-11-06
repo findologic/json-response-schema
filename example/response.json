@@ -1,0 +1,113 @@
+{
+  "request": {
+    "query": "Blubergurken",
+    "first": 0,
+    "count": 24,
+    "serviceId": "F53ABAB42D7931BE13532AFCA1A95CCE",
+    "usergroup": "foo",
+    "userId": "cd7984ec-e0c5-4bfb-a925-d607668153cd",
+    "order": {
+      "field": "salesfrequency",
+      "relevanceBased": true,
+      "direction": "DESC"
+    },
+    "selectedFilters": {
+      "cat": [
+        {
+          "value": "Gardening"
+        }
+      ],
+      "price": [
+        {
+          "min": 0.0,
+          "max": 15
+        }
+      ]
+    }
+  },
+  "results": {
+    "metadata": {
+      "effectiveQuery": "Blubbergurken",
+      "totalResults": 1337,
+      "requestId": "9cd42225-90d0-4858-bcb6-b05f33d8ec5e",
+      "searchConcept": "Seeds"
+    },
+    "variant": {
+      "name": "sdym",
+      "correctedQuery": "Blubbergurken"
+    },
+    "items": [
+      {
+        "id": "123ab",
+        "url": "https://example.org/product.html",
+        "name": "Blubbergurken Seeds",
+        "highlightedName": "<span class=\"flEmphasis\">Blubbergurken</span> Seeds",
+        "price": 13.37,
+        "ordernumbers": ["0012BLUB-42"],
+        "score": 4.667,
+        "summary": "These are some very nice seeds.",
+        "properties": {
+          "overriddenPrice": "15.00",
+          "taxRate": "20"
+        },
+        "productPlacement": "Seeds spring 2020",
+        "pushRules": [
+          "Seeds",
+          "Cucumbers"
+        ],
+        "attributes": {
+          "cat": [
+            "Gardening"
+          ],
+          "vendor": [
+            "Blubbergurken International Inc."
+          ]
+        }
+      }
+    ],
+    "availableFilters": {
+      "main": {
+        "cat": {
+          "displayName": "Category",
+          "index": 0,
+          "type": "select",
+          "selectMode": "single",
+          "values": [
+            {
+              "value": "Gardening_Spring",
+              "weight": 1.2,
+              "frequency": 13
+            }
+          ]
+        },
+        "vendor": {
+          "displayName": "Brand",
+          "index": 1,
+          "type": "label",
+          "noAvailableFiltersText": "Sorry, no more filters for you!",
+          "values": [
+            {
+              "value": "Blubbergurken International Inc.",
+              "weight": 0.8,
+              "frequency": 5
+            }
+          ]
+        }
+      },
+      "other": {
+        "color": {
+          "displayName": "Color",
+          "index": 0,
+          "type": "color",
+          "cssClass": "my-colors",
+          "values": [
+            {
+              "value": "Green",
+              "colorCode": "#00FF00"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

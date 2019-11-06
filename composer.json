@@ -1,0 +1,13 @@
+{
+    "name": "findologic/json-response-schema",
+    "description": "FINDOLOGIC search API response schema",
+    "type": "library",
+    "license": "UNLICENSED",
+    "authors": [
+        {
+            "name": "Chris Ortner",
+            "email": "c.ortner@findologic.com"
+        }
+    ],
+    "require": {}
+}

@@ -11,10 +11,20 @@
           "minLength": 1
         },
         "min": {
-          "type": "number"
+          "type": "number",
+          "description": "The absolute possible minimum value of the filter."
         },
         "max": {
-          "type": "number"
+          "type": "number",
+          "description": "The absolute possible maximum value of the filter."
+        },
+        "selectedMin": {
+          "type": "number",
+          "description": "In case of a selected filter, the minimum value of the selected range."
+        },
+        "selectedMax": {
+          "type": "number",
+          "description": "In case of a selected filter, the maximum value of the selected range."
         },
         "weight": {
           "type": "number"
@@ -25,6 +35,10 @@
         "colorCode": {
           "type": "string",
           "pattern": "^#[0-9A-Fa-f]{6}$"
+        },
+        "selected": {
+          "type": "boolean",
+          "description": "In available multiselect filters, this indicates filter values that have already been selected."
         }
       },
       "additionalProperties": false
@@ -32,14 +46,13 @@
     "availableFilter": {
       "type": "object",
       "properties": {
-        "displayName": {
+        "name": {
           "type": "string",
           "minLength": 1
         },
-        "index": {
-          "type": "integer",
-          "min": 0,
-          "description": "The configured position of the filter."
+        "displayName": {
+          "type": "string",
+          "minLength": 1
         },
         "type": {
           "type": "string",
@@ -78,8 +91,8 @@
       },
       "additionalProperties": false,
       "required": [
+        "name",
         "displayName",
-        "index",
         "type"
       ]
     }
@@ -173,7 +186,7 @@
         "order"
       ]
     },
-    "results": {
+    "result": {
       "type": "object",
       "properties": {
         "metadata": {
@@ -358,19 +371,15 @@
           "type": "object",
           "properties": {
             "main": {
-              "type": "object",
-              "patternProperties": {
-                "^.*$": {
-                  "$ref": "#/definitions/availableFilter"
-                }
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/availableFilter"
               }
             },
             "other": {
-              "type": "object",
-              "patternProperties": {
-                "^.*$": {
-                  "$ref": "#/definitions/availableFilter"
-                }
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/availableFilter"
               }
             }
           },
@@ -393,6 +402,6 @@
   "additionalProperties": false,
   "required": [
     "request",
-    "results"
+    "result"
   ]
 }

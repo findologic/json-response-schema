@@ -22,10 +22,15 @@
           "min": 0.0,
           "max": 15
         }
+      ],
+      "vendor": [
+        {
+          "value": "Blubbergurken International Inc."
+        }
       ]
     }
   },
-  "results": {
+  "result": {
     "metadata": {
       "effectiveQuery": "Blubbergurken",
       "totalResults": 1337,
@@ -75,10 +80,10 @@
       }
     ],
     "availableFilters": {
-      "main": {
-        "cat": {
+      "main": [
+        {
+          "name": "cat",
           "displayName": "Category",
-          "index": 0,
           "type": "select",
           "selectMode": "single",
           "values": [
@@ -89,24 +94,26 @@
             }
           ]
         },
-        "vendor": {
+        {
+          "name": "vendor",
           "displayName": "Brand",
-          "index": 1,
-          "type": "label",
+          "type": "select",
+          "selectMode": "multiple",
           "noAvailableFiltersText": "Sorry, no more filters for you!",
           "values": [
             {
               "value": "Blubbergurken International Inc.",
               "weight": 0.8,
-              "frequency": 5
+              "frequency": 5,
+              "selected": true
             }
           ]
         }
-      },
-      "other": {
-        "color": {
+      ],
+      "other": [
+        {
+          "name": "color",
           "displayName": "Color",
-          "index": 0,
           "type": "color",
           "cssClass": "my-colors",
           "values": [
@@ -116,7 +123,7 @@
             }
           ]
         }
-      }
+      ]
     }
   }
 }

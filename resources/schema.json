@@ -30,7 +30,7 @@
           "type": "number"
         },
         "frequency": {
-          "type": "number"
+          "type": ["number", "null"]
         },
         "colorCode": {
           "type": "string",

@@ -30,7 +30,7 @@
           "type": "number"
         },
         "frequency": {
-          "type": "number"
+          "type": ["number", "null"]
         },
         "colorCode": {
           "type": "string",
@@ -122,7 +122,7 @@
           "pattern": "^[0-9A-F]{32}$"
         },
         "usergroup": {
-          "type": "string",
+          "type": ["string", "null"],
           "minLength": 1,
           "description": "In case usergroups are used and one is set in the query, the one that was used. Only relevant for services with XML export."
         },
@@ -136,7 +136,7 @@
           "description": "In case groups are used and one or more are set in the query, the ones being used. Only relevant for services with CSV export."
         },
         "userId": {
-          "type": "string",
+          "type": ["string", "null"],
           "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
           "description": "Anonymous ID of the searching user. Only set if provided."
         },
@@ -181,9 +181,11 @@
         "query",
         "first",
         "count",
-        "selectedFilters",
         "serviceId",
-        "order"
+        "usergroup",
+        "userId",
+        "order",
+        "selectedFilters"
       ]
     },
     "result": {
@@ -207,12 +209,12 @@
               "description": "Unique ID of the request that was processed for log correlation purposes."
             },
             "searchConcept": {
-              "type": "string",
+              "type": ["string", "null"],
               "minLength": 1,
               "description": "In case the search triggers a Search Concept, this is its name."
             },
             "landingpage": {
-              "type": "object",
+              "type": ["object", "null"],
               "properties": {
                 "name": {
                   "type": "string",
@@ -227,7 +229,7 @@
               "required": ["name", "url"]
             },
             "promotion": {
-              "type": "object",
+              "type": ["object", "null"],
               "properties": {
                 "name": {
                   "type": "string",
@@ -248,6 +250,10 @@
           },
           "additionalProperties": false,
           "required": [
+            "landingpage",
+            "promotion",
+            "searchConcept",
+            "requestId",
             "effectiveQuery",
             "totalResults"
           ]
@@ -271,7 +277,7 @@
               "description": "In case of Smart Did-You-Mean, a query that was deemed more useful than the user query."
             },
             "didYouMeanQuery": {
-              "type": "string",
+              "type": ["string", "null"],
               "minLength": 1,
               "description": "In case of Smart Did-You-Mean, a query related to the user query which one might also be interested in."
             }
@@ -363,7 +369,17 @@
             "additionalProperties": false,
             "required": [
               "id",
-              "score"
+              "score",
+              "url",
+              "name",
+              "highlightedName",
+              "ordernumbers",
+              "summary",
+              "price",
+              "properties",
+              "productPlacement",
+              "pushRules",
+              "attributes"
             ]
           }
         },

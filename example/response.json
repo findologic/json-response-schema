@@ -58,6 +58,7 @@
         "highlightedName": "<span class=\"flEmphasis\">Blubbergurken</span> Seeds",
         "price": 13.37,
         "ordernumbers": ["0012BLUB-42"],
+        "matchingOrdernumber": "34567",
         "score": 4.667,
         "summary": "These are some very nice seeds.",
         "properties": {

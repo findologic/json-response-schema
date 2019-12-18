@@ -50,6 +50,11 @@
           "type": "string",
           "minLength": 1
         },
+        "selectedItems": {
+          "type": "integer",
+          "min": 0,
+          "description": "Count of selected filters"
+        },
         "displayName": {
           "type": "string",
           "minLength": 1

@@ -87,7 +87,6 @@
           "displayName": "Category",
           "type": "select",
           "selectMode": "single",
-          "selectedItems" : 0,
           "values": [
             {
               "value": "Gardening_Spring",
@@ -101,7 +100,6 @@
           "displayName": "Brand",
           "type": "select",
           "selectMode": "multiple",
-          "selectedItems" : 1,
           "noAvailableFiltersText": "Sorry, no more filters for you!",
           "values": [
             {

@@ -322,6 +322,10 @@
                   "type": "string"
                 }
               },
+              "matchingOrdernumber": {
+                "type": "string",
+                "minLength": 0
+              },
               "score": {
                 "type": "number",
                 "min": 0
@@ -374,6 +378,7 @@
               "name",
               "highlightedName",
               "ordernumbers",
+              "matchingOrdernumber",
               "summary",
               "price",
               "properties",

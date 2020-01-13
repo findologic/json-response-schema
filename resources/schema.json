@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "FINDOLOGIC Search API JSON response 1.0",
   "description": "JSON format for search results, filters, and more.",
   "definitions": {
@@ -29,11 +29,11 @@
           "description": "In case of a selected filter, the maximum value of the selected range."
         },
         "weight": {
-          "description": "THe numeric indicator of the impact the filter value has on the result. The higher, the more specific the results will be.",
+          "description": "The numeric indicator of the impact the filter value has on the result. The higher, the more specific the results will be.",
           "type": "number"
         },
         "frequency": {
-          "description": "The numer of products matching a filter. Not supported in all configuration constellations.",
+          "description": "The number of products matching a filter. Not supported in all configuration constellations.",
           "type": ["number", "null"]
         },
         "colorCode": {

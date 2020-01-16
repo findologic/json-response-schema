@@ -1,22 +1,24 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "FINDOLOGIC Search API JSON response 1.0",
   "description": "JSON format for search results, filters, and more.",
   "definitions": {
     "filterMetadata": {
+      "description": "Configured and computed data for individual filters.",
       "type": "object",
       "properties": {
         "value": {
+          "description": "The filter value, as selected or suitable for visualization.",
           "type": "string",
           "minLength": 1
         },
         "min": {
           "type": "number",
-          "description": "The absolute possible minimum value of the filter."
+          "description": "The absolute possible minimum value of the filter given present query and other filters."
         },
         "max": {
           "type": "number",
-          "description": "The absolute possible maximum value of the filter."
+          "description": "The absolute possible maximum value of the filter given present query and other filters."
         },
         "selectedMin": {
           "type": "number",
@@ -27,34 +29,41 @@
           "description": "In case of a selected filter, the maximum value of the selected range."
         },
         "weight": {
+          "description": "The numeric indicator of the impact the filter value has on the result. The higher, the more specific the results will be.",
           "type": "number"
         },
         "frequency": {
+          "description": "The number of products matching a filter. Not supported in all configuration constellations.",
           "type": ["number", "null"]
         },
         "colorCode": {
+          "description": "For color filters, the hexadecimal code corresponding to the color. The filter's value is the configured color name in such a case.",
           "type": "string",
           "pattern": "^#[0-9A-Fa-f]{6}$"
         },
         "selected": {
           "type": "boolean",
-          "description": "In available multiselect filters, this indicates filter values that have already been selected."
+          "description": "In available multi-select filters, this indicates filter values that have already been selected."
         }
       },
       "additionalProperties": false
     },
     "availableFilter": {
+      "description": "A selected value, with limited metadata as compared to available filters.",
       "type": "object",
       "properties": {
         "name": {
+          "description": "The internal name of the filter (as exported).",
           "type": "string",
           "minLength": 1
         },
         "displayName": {
+          "description": "The configured display name of the filter.",
           "type": "string",
           "minLength": 1
         },
         "type": {
+          "description": "The configured filter type.",
           "type": "string",
           "enum": [
             "select",
@@ -70,12 +79,12 @@
             "single",
             "multiple"
           ],
-          "description": "Wheter one or more filter values can be selected at the same time."
+          "description": "Whether one or more filter values can be selected at the same time. Only applies to a subset of available filter types."
         },
         "cssClass": {
           "type": "string",
           "minLength": 1,
-          "description": "Optionally configurable CSS class from Customer Login."
+          "description": "Optionally configurable CSS class."
         },
         "noAvailableFiltersText": {
           "type": "string",
@@ -100,12 +109,13 @@
   "type": "object",
   "properties": {
     "request": {
+      "description": "Selection of mirrored request parameters, including defaults for some that weren't specified, if applicable.",
       "type": "object",
       "properties": {
         "query": {
           "type": "string",
           "minLength": 0,
-          "description": "The search term"
+          "description": "The search terms."
         },
         "first": {
           "type": "integer",
@@ -118,6 +128,7 @@
           "description": "Items per page."
         },
         "serviceId": {
+          "description": "Mirrored from the required request parameter \"shopkey\"",
           "type": "string",
           "pattern": "^[0-9A-F]{32}$"
         },
@@ -141,15 +152,19 @@
           "description": "Anonymous ID of the searching user. Only set if provided."
         },
         "order": {
+          "description": "Sorting instructions for the results.",
           "type": "object",
           "properties": {
             "field": {
+              "description": "Field to sort by if relevanceBased is false. Otherwise, numeric values from this field are used to influence the otherwise relevance-based score.",
               "type": "string"
             },
             "relevanceBased": {
+              "description": "Whether products are sorted by relevance based on query matches, or if sorting should happen strictly by a numeric value.",
               "type": "boolean"
             },
             "direction": {
+              "description": "Whether to sort products from lowest to highest or otherwise.",
               "type": "string",
               "enum": [
                 "ASC",
@@ -165,6 +180,7 @@
           ]
         },
         "selectedFilters": {
+          "description": "Filters that have previously been selected.",
           "type": "object",
           "patternProperties": {
             "^.*$": {
@@ -189,9 +205,11 @@
       ]
     },
     "result": {
+      "description": "Matching results, filters, and metadata about the result.",
       "type": "object",
       "properties": {
         "metadata": {
+          "description": "Request metadata, including information on certain merchandising features, if they apply to the query.",
           "type": "object",
           "properties": {
             "effectiveQuery": {
@@ -200,6 +218,7 @@
               "description": "The query that was actually used to serve the results. Relevant for variants like Smart Did-You-Mean that may override the user query."
             },
             "totalResults": {
+              "description": "The total number of matches, going beyond pagination limits.",
               "type": "integer",
               "min": 0
             },
@@ -214,13 +233,16 @@
               "description": "In case the search triggers a Search Concept, this is its name."
             },
             "landingpage": {
+              "description": "In case the search triggers a Landingpage, this is its name and URL.",
               "type": ["object", "null"],
               "properties": {
                 "name": {
+                  "description": "Name of the matching Landingpage, intended for display and tracking.",
                   "type": "string",
                   "minLength": 1
                 },
                 "url": {
+                  "description": "URL of the Landingpage, which should be either redirected to, or offered to the user as a link.",
                   "type": "string",
                   "pattern": "^https?://.*$"
                 }
@@ -229,17 +251,21 @@
               "required": ["name", "url"]
             },
             "promotion": {
+              "description": "In case the search triggers a promotion, this is its name and URL.",
               "type": ["object", "null"],
               "properties": {
                 "name": {
+                  "description": "Name of the matching promotion, intended for display and tracking.",
                   "type": "string",
                   "minLength": 1
                 },
                 "url": {
+                  "description": "URL of the page the promotion image should link to.",
                   "type": "string",
                   "pattern": "^https?://.*$"
                 },
                 "imageUrl": {
+                  "description": "URL of the image to use for displaying the promotion.",
                   "type": "string",
                   "pattern": "^https?://.*$"
                 }
@@ -259,6 +285,7 @@
           ]
         },
         "variant": {
+          "description": "Information on decisions a search logic variant made.",
           "type": "object",
           "properties": {
             "name": {
@@ -288,35 +315,43 @@
           ]
         },
         "items": {
+          "description": "The matching items, constraint by the pagination parameters. The values being shown respect the specified usergroup, if applicable.",
           "type": "array",
           "minLength": 0,
           "items": {
             "type": "object",
             "properties": {
               "id": {
+                "description": "Item ID, as exported.",
                 "type": "string",
                 "minLength": 1
               },
               "url": {
+                "description": "Detail page URL.",
                 "type": "string",
                 "pattern": "^https?://.*$"
               },
               "imageUrl": {
+                "description": "Primary image URL. Additionally exported images can be accessed via the item's properties.",
                 "type": "string",
                 "pattern": "^https?://.*$"
               },
               "name": {
+                "description": "Name of the item without any query-based highlighting.",
                 "type": "string",
                 "minLength": 0
               },
               "highlightedName": {
+                "description": "Name of the item with portions of it highlighted if matching the query. The matching part is wrapped in a <span class=\"flEmphasis\"> tag.",
                 "type": "string",
                 "minLength": 0
               },
               "price": {
+                "description": "The item's price.",
                 "type": "number"
               },
               "ordernumbers": {
+                "description": "The item's ordernumbers. Currently, only the first exported one is available.",
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -327,14 +362,17 @@
                 "minLength": 0
               },
               "score": {
+                "description": "Search score.",
                 "type": "number",
                 "min": 0
               },
               "summary": {
+                "description": "Exported short summary.",
                 "type": "string",
                 "minLength": 0
               },
               "properties": {
+                "description": "Non-searchable value exported as properties. Includes additional images, if applicable.",
                 "type": "object",
                 "properties": {
                   ".*": {
@@ -389,15 +427,18 @@
           }
         },
         "availableFilters": {
+          "description": "Filters available based on the query, and as configured in the filter configuration. Does not include inactive filters.",
           "type": "object",
           "properties": {
             "main": {
+              "description": "Filters configured for primary visibility.",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/availableFilter"
               }
             },
             "other": {
+              "description": "Filters configured for secondary visibility. Should be initially hidden or collapsed.",
               "type": "array",
               "items": {
                 "$ref": "#/definitions/availableFilter"

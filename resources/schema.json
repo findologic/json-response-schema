@@ -372,7 +372,7 @@
                 "minLength": 0
               },
               "properties": {
-                "description": "Non-searchable value exported as properties. Includes additional images, if applicable.",
+                "description": "Non-searchable value exported as properties. Includes additional images, if applicable. The desired values have to be requested with the 'properties[]' parameter",
                 "type": "object",
                 "properties": {
                   ".*": {

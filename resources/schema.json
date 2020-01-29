@@ -96,6 +96,10 @@
           "items": {
             "$ref": "#/definitions/filterMetadata"
           }
+        },
+        "pinnedFilterValueCount": {
+          "type": "integer",
+          "description": "This is the number of filter values that should always be shown, and any more values than that should be hidden, e.g. by putting them in a dropdown."
         }
       },
       "additionalProperties": false,

@@ -39,6 +39,9 @@
         "selected": {
           "type": "boolean",
           "description": "In available multiselect filters, this indicates filter values that have already been selected."
+        },
+        "image": {
+          "type": "string"
         }
       },
       "additionalProperties": false

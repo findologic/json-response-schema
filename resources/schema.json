@@ -46,7 +46,8 @@
           "description": "In available multi-select filters, this indicates filter values that have already been selected."
         },
         "image": {
-          "type": "string"
+          "type": "string",
+          "description": "This contains an URL of a filter of type image"
         }
       },
       "additionalProperties": false

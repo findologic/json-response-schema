@@ -47,7 +47,7 @@
         },
         "image": {
           "type": "string",
-          "description": "This contains a Filter-URL"
+          "description": "In case of an image-filter, this attribute contains a filter-URL "
         }
       },
       "additionalProperties": false

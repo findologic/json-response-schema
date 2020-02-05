@@ -44,6 +44,10 @@
         "selected": {
           "type": "boolean",
           "description": "In available multi-select filters, this indicates filter values that have already been selected."
+        },
+        "image": {
+          "type": "string",
+          "description": "In case of an image-filter, this attribute contains a filter-URL "
         }
       },
       "additionalProperties": false

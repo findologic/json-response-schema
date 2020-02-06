@@ -80,7 +80,7 @@
         }
       }
     ],
-    "availableFilters": {
+    "filters": {
       "main": [
         {
           "name": "cat",

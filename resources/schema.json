@@ -52,7 +52,7 @@
       },
       "additionalProperties": false
     },
-    "availableFilter": {
+    "filters": {
       "description": "A selected value, with limited metadata as compared to available filters.",
       "type": "object",
       "properties": {
@@ -83,7 +83,7 @@
             "single",
             "multiple"
           ],
-          "description": "Whether one or more filter values can be selected at the same time. Only applies to a subset of available filter types."
+          "description": "Whether one or more filter values can be selected at the same time. Only applies to a subset of available filter types. Filters of select-type single have just one value to select, unless 'cat'-filter and range-filter. Filters of select-type multiple with 'combinationOperation' of type 'or' can have more than one value, each values are OR-combined. Filters of select-type multiple with 'combinationOperation' of type 'and' can have more than one value, each values are AND-combined."
         },
         "cssClass": {
           "type": "string",
@@ -434,7 +434,7 @@
             ]
           }
         },
-        "availableFilters": {
+        "filters": {
           "description": "Filters available based on the query, and as configured in the filter configuration. Does not include inactive filters.",
           "type": "object",
           "properties": {
@@ -465,7 +465,7 @@
         "metadata",
         "variant",
         "items",
-        "availableFilters"
+        "filters"
       ]
     }
   },

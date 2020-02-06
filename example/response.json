@@ -117,11 +117,30 @@
           "name": "color",
           "displayName": "Color",
           "type": "color",
+          "selectMode": "multiple",
           "cssClass": "my-colors",
           "values": [
             {
               "value": "Green",
               "colorCode": "#00FF00"
+            }
+          ]
+        },
+        {
+          "name": "price",
+          "displayName": "max. Price",
+          "type": "range-slider",
+          "selectMode": "single",
+          "values": [
+            {
+              "value": 3,
+              "weight": 0,
+              "frequency": null
+            },
+            {
+              "value": 158221,
+              "weight": 0,
+              "frequency": null
             }
           ]
         }

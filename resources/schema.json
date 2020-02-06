@@ -104,6 +104,14 @@
         "pinnedFilterValueCount": {
           "type": "integer",
           "description": "This is the number of filter values that should always be shown, and any more values than that should be hidden, e.g. by putting them in a dropdown."
+        },
+        "combinationOperation": {
+          "type": "string",
+          "enum": [
+            "or",
+            "and"
+          ],
+          "description": "This indicates whether multiple-filters are applied in a OR- or AND-condition."
         }
       },
       "additionalProperties": false,

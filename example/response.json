@@ -107,7 +107,8 @@
               "value": "Blubbergurken International Inc.",
               "weight": 0.8,
               "frequency": 5,
-              "selected": true
+              "selected": true,
+              "frequencyType" : "additive"
             }
           ]
         }

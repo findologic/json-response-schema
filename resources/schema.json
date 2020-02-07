@@ -36,6 +36,13 @@
           "description": "The number of products matching a filter. Not supported in all configuration constellations.",
           "type": ["number", "null"]
         },
+        "frequencyType": {
+          "type": "string",
+          "enum": [
+            "additive"
+          ],
+          "description": "In case of an selected-filter, this attribute indicates that no more products can come from this filter."
+        },
         "colorCode": {
           "description": "For color filters, the hexadecimal code corresponding to the color. The filter's value is the configured color name in such a case.",
           "type": "string",

@@ -59,7 +59,7 @@
       },
       "additionalProperties": false
     },
-    "filters": {
+    "filter": {
       "description": "A selected value, with limited metadata as compared to available filters.",
       "type": "object",
       "properties": {
@@ -457,14 +457,14 @@
               "description": "Filters configured for primary visibility.",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/availableFilter"
+                "$ref": "#/definitions/filter"
               }
             },
             "other": {
               "description": "Filters configured for secondary visibility. Should be initially hidden or collapsed.",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/availableFilter"
+                "$ref": "#/definitions/filter"
               }
             }
           },

@@ -201,18 +201,6 @@
             "relevanceBased",
             "direction"
           ]
-        },
-        "selectedFilters": {
-          "description": "Filters that have previously been selected.",
-          "type": "object",
-          "patternProperties": {
-            "^.*$": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/filterMetadata"
-              }
-            }
-          }
         }
       },
       "additionalProperties": false,
@@ -223,8 +211,7 @@
         "serviceId",
         "usergroup",
         "userId",
-        "order",
-        "selectedFilters"
+        "order"
       ]
     },
     "result": {

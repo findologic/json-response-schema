@@ -36,6 +36,7 @@
       "totalResults": 1337,
       "requestId": "9cd42225-90d0-4858-bcb6-b05f33d8ec5e",
       "searchConcept": "Seeds",
+      "currencySymbol": "€",
       "landingpage": {
         "name": "New arrivals",
         "url": "https://example.org/new_stuff.html"

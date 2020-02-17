@@ -225,6 +225,10 @@
               "minLength": 0,
               "description": "The query that was actually used to serve the results. Relevant for variants like Smart Did-You-Mean that may override the user query."
             },
+            "currencySymbol": {
+              "type": "string",
+              "description": "The shop currency symbol"
+            },
             "totalResults": {
               "description": "The total number of matches, going beyond pagination limits.",
               "type": "integer",
@@ -289,7 +293,8 @@
             "searchConcept",
             "requestId",
             "effectiveQuery",
-            "totalResults"
+            "totalResults",
+            "currencySymbol"
           ]
         },
         "variant": {

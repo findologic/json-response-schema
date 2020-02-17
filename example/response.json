@@ -55,6 +55,7 @@
       {
         "id": "123ab",
         "url": "https://example.org/product.html",
+        "imageUrl": "https://example.org/product.png",
         "name": "Blubbergurken Seeds",
         "highlightedName": "<span class=\"flEmphasis\">Blubbergurken</span> Seeds",
         "price": 13.37,

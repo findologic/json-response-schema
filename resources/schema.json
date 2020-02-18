@@ -71,7 +71,7 @@
           "type": "string",
           "enum": [
             "select",
-            "rangeSlider",
+            "range-slider",
             "color",
             "label",
             "image"
@@ -104,6 +104,36 @@
         "pinnedFilterValueCount": {
           "type": "integer",
           "description": "This is the number of filter values that should always be shown, and any more values than that should be hidden, e.g. by putting them in a dropdown."
+        },
+        "totalRange": {
+          "description": "The usable range of a range slider",
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "The minimum of the possible range"
+            },
+            "max": {
+              "type": "number",
+              "description": "The maximum of the possible range"
+            }
+          }
+        },
+        "selectedRange": {
+          "description": "The currently selected range of a range slider",
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "The minimum of the selected range"
+            },
+            "max": {
+              "type": "number",
+              "description": "The maximum of the selected range"
+            }
+          }
+        },
+        "stepSize": {
+          "type": "number",
+          "description": "The step size for range filters"
         }
       },
       "additionalProperties": false,

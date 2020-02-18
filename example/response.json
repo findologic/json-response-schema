@@ -97,6 +97,32 @@
           "pinnedFilterValueCount": 6
         },
         {
+          "type": "range-slider",
+          "totalRange": {
+            "min": 2.37,
+            "max": 10106.09
+          },
+          "selectedRange": {
+            "min": 2.37,
+            "max": 10106.09
+          },
+          "stepSize": 0.1,
+          "unit": "€",
+          "name": "price",
+          "displayName": "Preis",
+          "selectMode": "single",
+          "values": [
+            {
+              "value": {
+                "min": 2.37,
+                "max": 30.75
+              },
+              "weight": 0.3948,
+              "frequency": null
+            }
+          ]
+        },
+        {
           "name": "vendor",
           "displayName": "Brand",
           "type": "select",

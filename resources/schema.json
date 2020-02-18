@@ -9,7 +9,7 @@
       "properties": {
         "value": {
           "description": "The filter value, as selected or suitable for visualization.",
-          "type": "string",
+          "type": ["string", "object"],
           "minLength": 1
         },
         "min": {
@@ -134,6 +134,10 @@
         "stepSize": {
           "type": "number",
           "description": "The step size for range filters"
+        },
+        "unit": {
+          "type": "string",
+          "description": "The unit for range filters"
         }
       },
       "additionalProperties": false,

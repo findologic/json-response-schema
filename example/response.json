@@ -127,5 +127,11 @@
         }
       ]
     }
-  }
+  },
+  "errors": [
+    {
+      "status": "503",
+      "title": "An error occurred due to service is not available"
+    }
+  ]
 }

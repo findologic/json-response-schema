@@ -134,24 +134,6 @@
               "colorCode": "#00FF00"
             }
           ]
-        },
-        {
-          "name": "price",
-          "displayName": "max. Price",
-          "type": "rangeSlider",
-          "selectMode": "single",
-          "values": [
-            {
-              "value": "3",
-              "weight": 0,
-              "frequency": null
-            },
-            {
-              "value": "158221",
-              "weight": 0,
-              "frequency": null
-            }
-          ]
         }
       ]
     }

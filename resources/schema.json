@@ -9,7 +9,7 @@
       "properties": {
         "value": {
           "description": "The filter value, as selected or suitable for visualization.",
-          "type": "string",
+          "type": ["string", "object"],
           "minLength": 1
         },
         "min": {
@@ -78,7 +78,7 @@
           "type": "string",
           "enum": [
             "select",
-            "rangeSlider",
+            "range-slider",
             "color",
             "label",
             "image"
@@ -119,6 +119,40 @@
             "and"
           ],
           "description": "This indicates whether multiple-filters are applied in a OR- or AND-condition."
+        },
+        "totalRange": {
+          "description": "The usable range of a range slider",
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "The minimum of the possible range"
+            },
+            "max": {
+              "type": "number",
+              "description": "The maximum of the possible range"
+            }
+          }
+        },
+        "selectedRange": {
+          "description": "The currently selected range of a range slider",
+          "properties": {
+            "min": {
+              "type": "number",
+              "description": "The minimum of the selected range"
+            },
+            "max": {
+              "type": "number",
+              "description": "The maximum of the selected range"
+            }
+          }
+        },
+        "stepSize": {
+          "type": "number",
+          "description": "The step size for range filters"
+        },
+        "unit": {
+          "type": "string",
+          "description": "The unit for range filters"
         }
       },
       "additionalProperties": false,

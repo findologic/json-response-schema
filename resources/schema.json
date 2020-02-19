@@ -121,38 +121,48 @@
           "description": "This indicates whether multiple-filters are applied in a OR- or AND-condition."
         },
         "totalRange": {
-          "description": "The usable range of a range slider",
+          "description": "The usable range of a range slider.",
           "properties": {
             "min": {
               "type": "number",
-              "description": "The minimum of the possible range"
+              "description": "The minimum of the possible range."
             },
             "max": {
               "type": "number",
-              "description": "The maximum of the possible range"
+              "description": "The maximum of the possible range."
             }
-          }
+          },
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max"
+          ]
         },
         "selectedRange": {
-          "description": "The currently selected range of a range slider",
+          "description": "The currently selected range of a range slider.",
           "properties": {
             "min": {
               "type": "number",
-              "description": "The minimum of the selected range"
+              "description": "The minimum of the selected range."
             },
             "max": {
               "type": "number",
-              "description": "The maximum of the selected range"
+              "description": "The maximum of the selected range."
             }
-          }
+          },
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max"
+          ]
         },
         "stepSize": {
           "type": "number",
-          "description": "The step size for range filters"
+          "description": "The step size for range filters."
         },
         "unit": {
           "type": "string",
-          "description": "The unit for range filters"
+          "description": "The unit for range filters."
         }
       },
       "additionalProperties": false,
@@ -185,7 +195,7 @@
           "description": "Items per page."
         },
         "serviceId": {
-          "description": "Mirrored from the required request parameter \"shopkey\"",
+          "description": "Mirrored from the required request parameter \"shopkey\".",
           "type": "string",
           "pattern": "^[0-9A-F]{32}$"
         },
@@ -416,7 +426,7 @@
                 "minLength": 0
               },
               "properties": {
-                "description": "Non-searchable value exported as properties. Includes additional images, if applicable. The desired values have to be requested with the 'properties[]' parameter",
+                "description": "Non-searchable value exported as properties. Includes additional images, if applicable. The desired values have to be requested with the 'properties[]' parameter.",
                 "type": "object",
                 "properties": {
                   ".*": {

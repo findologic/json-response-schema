@@ -10,24 +10,6 @@
       "field": "salesfrequency",
       "relevanceBased": true,
       "direction": "DESC"
-    },
-    "selectedFilters": {
-      "cat": [
-        {
-          "value": "Gardening"
-        }
-      ],
-      "price": [
-        {
-          "min": 0.0,
-          "max": 15
-        }
-      ],
-      "vendor": [
-        {
-          "value": "Blubbergurken International Inc."
-        }
-      ]
     }
   },
   "result": {
@@ -82,7 +64,7 @@
         }
       }
     ],
-    "availableFilters": {
+    "filters": {
       "main": [
         {
           "name": "cat",
@@ -99,6 +81,32 @@
           "pinnedFilterValueCount": 6
         },
         {
+          "type": "range-slider",
+          "totalRange": {
+            "min": 2.37,
+            "max": 10106.09
+          },
+          "selectedRange": {
+            "min": 2.37,
+            "max": 10106.09
+          },
+          "stepSize": 0.1,
+          "unit": "€",
+          "name": "price",
+          "displayName": "Preis",
+          "selectMode": "single",
+          "values": [
+            {
+              "value": {
+                "min": 2.37,
+                "max": 30.75
+              },
+              "weight": 0.3948,
+              "frequency": null
+            }
+          ]
+        },
+        {
           "name": "vendor",
           "displayName": "Brand",
           "type": "select",
@@ -109,7 +117,8 @@
               "value": "Blubbergurken International Inc.",
               "weight": 0.8,
               "frequency": 5,
-              "selected": true
+              "selected": true,
+              "frequencyType" : "additive"
             }
           ]
         }
@@ -119,6 +128,7 @@
           "name": "color",
           "displayName": "Color",
           "type": "color",
+          "selectMode": "multiple",
           "cssClass": "my-colors",
           "values": [
             {

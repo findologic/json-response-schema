@@ -10,24 +10,6 @@
       "field": "salesfrequency",
       "relevanceBased": true,
       "direction": "DESC"
-    },
-    "selectedFilters": {
-      "cat": [
-        {
-          "value": "Gardening"
-        }
-      ],
-      "price": [
-        {
-          "min": 0.0,
-          "max": 15
-        }
-      ],
-      "vendor": [
-        {
-          "value": "Blubbergurken International Inc."
-        }
-      ]
     }
   },
   "result": {
@@ -80,7 +62,7 @@
         }
       }
     ],
-    "availableFilters": {
+    "filters": {
       "main": [
         {
           "name": "cat",
@@ -133,7 +115,8 @@
               "value": "Blubbergurken International Inc.",
               "weight": 0.8,
               "frequency": 5,
-              "selected": true
+              "selected": true,
+              "frequencyType" : "additive"
             }
           ]
         }
@@ -143,6 +126,7 @@
           "name": "color",
           "displayName": "Color",
           "type": "color",
+          "selectMode": "multiple",
           "cssClass": "my-colors",
           "values": [
             {

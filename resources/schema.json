@@ -36,6 +36,14 @@
           "description": "The number of products matching a filter. Not supported in all configuration constellations.",
           "type": ["number", "null"]
         },
+        "frequencyType": {
+          "type": "string",
+          "enum": [
+            "additive",
+            "absolute"
+          ],
+          "description": "In case of a selected-filter, this property indicates whether the frequency is the number of additional products you'll get after selecting the filter (additive), or whether it's the total number of results you'll have after selecting the filter (absolute)."
+        },
         "colorCode": {
           "description": "For color filters, the hexadecimal code corresponding to the color. The filter's value is the configured color name in such a case.",
           "type": "string",
@@ -52,7 +60,7 @@
       },
       "additionalProperties": false
     },
-    "availableFilter": {
+    "filter": {
       "description": "A selected value, with limited metadata as compared to available filters.",
       "type": "object",
       "properties": {
@@ -83,7 +91,7 @@
             "single",
             "multiple"
           ],
-          "description": "Whether one or more filter values can be selected at the same time. Only applies to a subset of available filter types."
+          "description": "Whether one or more filter values can be selected at the same time."
         },
         "cssClass": {
           "type": "string",
@@ -104,6 +112,14 @@
         "pinnedFilterValueCount": {
           "type": "integer",
           "description": "This is the number of filter values that should always be shown, and any more values than that should be hidden, e.g. by putting them in a dropdown."
+        },
+        "combinationOperation": {
+          "type": "string",
+          "enum": [
+            "or",
+            "and"
+          ],
+          "description": "This indicates whether multiple-filters are applied in a OR- or AND-condition and do only apply after a minimum of two filters have been selected. The AND-condition shrinks the result (A and B have to match), while the OR-condition makes it grow (A or B have to match)."
         },
         "totalRange": {
           "description": "The usable range of a range slider.",
@@ -230,18 +246,6 @@
             "relevanceBased",
             "direction"
           ]
-        },
-        "selectedFilters": {
-          "description": "Filters that have previously been selected.",
-          "type": "object",
-          "patternProperties": {
-            "^.*$": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/filterMetadata"
-              }
-            }
-          }
         }
       },
       "additionalProperties": false,
@@ -252,8 +256,7 @@
         "serviceId",
         "usergroup",
         "userId",
-        "order",
-        "selectedFilters"
+        "order"
       ]
     },
     "result": {
@@ -478,7 +481,7 @@
             ]
           }
         },
-        "availableFilters": {
+        "filters": {
           "description": "Filters available based on the query, and as configured in the filter configuration. Does not include inactive filters.",
           "type": "object",
           "properties": {
@@ -486,14 +489,14 @@
               "description": "Filters configured for primary visibility.",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/availableFilter"
+                "$ref": "#/definitions/filter"
               }
             },
             "other": {
               "description": "Filters configured for secondary visibility. Should be initially hidden or collapsed.",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/availableFilter"
+                "$ref": "#/definitions/filter"
               }
             }
           },
@@ -509,7 +512,7 @@
         "metadata",
         "variant",
         "items",
-        "availableFilters"
+        "filters"
       ]
     }
   },

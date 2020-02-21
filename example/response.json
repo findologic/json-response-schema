@@ -73,6 +73,7 @@
           "selectMode": "single",
           "values": [
             {
+              "displayName": "Spring",
               "value": "Gardening_Spring",
               "weight": 1.2,
               "frequency": 13

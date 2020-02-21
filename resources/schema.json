@@ -59,7 +59,7 @@
         },
         "displayName": {
           "type": "string",
-          "description": "Name of a category without the full path"
+          "description": "Name of a category without the full path. This is the rightmost part of the path."
         }
       },
       "additionalProperties": false

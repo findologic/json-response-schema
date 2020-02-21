@@ -56,6 +56,10 @@
         "image": {
           "type": "string",
           "description": "In case of an image-filter, this attribute contains a filter-URL "
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Name of a category without the full path. This is the rightmost part of the path."
         }
       },
       "additionalProperties": false
@@ -272,6 +276,10 @@
               "minLength": 0,
               "description": "The query that was actually used to serve the results. Relevant for variants like Smart Did-You-Mean that may override the user query."
             },
+            "currencySymbol": {
+              "type": "string",
+              "description": "The shop currency symbol"
+            },
             "totalResults": {
               "description": "The total number of matches, going beyond pagination limits.",
               "type": "integer",
@@ -336,7 +344,8 @@
             "searchConcept",
             "requestId",
             "effectiveQuery",
-            "totalResults"
+            "totalResults",
+            "currencySymbol"
           ]
         },
         "variant": {
@@ -477,7 +486,8 @@
               "properties",
               "productPlacement",
               "pushRules",
-              "attributes"
+              "attributes",
+              "imageUrl"
             ]
           }
         },

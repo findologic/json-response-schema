@@ -18,6 +18,7 @@
       "totalResults": 1337,
       "requestId": "9cd42225-90d0-4858-bcb6-b05f33d8ec5e",
       "searchConcept": "Seeds",
+      "currencySymbol": "€",
       "landingpage": {
         "name": "New arrivals",
         "url": "https://example.org/new_stuff.html"
@@ -36,6 +37,7 @@
       {
         "id": "123ab",
         "url": "https://example.org/product.html",
+        "imageUrl": "https://example.org/product.png",
         "name": "Blubbergurken Seeds",
         "highlightedName": "<span class=\"flEmphasis\">Blubbergurken</span> Seeds",
         "price": 13.37,
@@ -71,6 +73,7 @@
           "selectMode": "single",
           "values": [
             {
+              "displayName": "Spring",
               "value": "Gardening_Spring",
               "weight": 1.2,
               "frequency": 13

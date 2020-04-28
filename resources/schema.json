@@ -443,7 +443,7 @@
                 }
               },
               "productPlacement": {
-                "type": "string",
+                "type": ["string", "null"],
                 "minLength": 1,
                 "description": "In case a Product Placement matches the product, this is its name."
               },

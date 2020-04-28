@@ -44,7 +44,7 @@
           ],
           "description": "In case of a selected-filter, this property indicates whether the frequency is the number of additional products you'll get after selecting the filter (additive), or whether it's the total number of results you'll have after selecting the filter (absolute)."
         },
-        "colorCode": {
+        "color": {
           "description": "For color filters, the hexadecimal code corresponding to the color. The filter's value is the configured color name in such a case.",
           "type": "string",
           "pattern": "^#[0-9A-Fa-f]{6}$"

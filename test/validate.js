@@ -12,16 +12,16 @@ async function parseJsonWithErrorHandling(path) {
     }
 }
 
-async function main() {
+async function validateFile(fileName) {
     const validator = new Validator();
 
-    const instance = await parseJsonWithErrorHandling(__dirname + '/../example/response.json');
+    const instance = await parseJsonWithErrorHandling(__dirname + '/../example/' + fileName);
     const schema = await parseJsonWithErrorHandling(__dirname + '/../resources/schema.json');
 
     const result = validator.validate(instance, schema);
 
     if (!result.valid) {
-        console.error('Schema or example are not valid. Errors:');
+        console.error(fileName + ': Schema or example are not valid. Errors:');
 
         result.errors.forEach((error) => {
             console.error(error.property + ' ' + error.message);
@@ -29,8 +29,12 @@ async function main() {
 
         process.exit(1);
     } else {
-        console.log('Schema and example are valid.');
+        console.log(fileName + ': Schema and example are valid.');
     }
+}
+
+async function main() {
+    ['response.json', 'responseWithVariants.json'].forEach(fileName => validateFile(fileName));
 }
 
 main();

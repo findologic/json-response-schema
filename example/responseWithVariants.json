@@ -85,6 +85,19 @@
                 "Blubbergurken International Inc."
               ]
             }
+          },
+          {
+            "id": "123ab-A",
+            "url": null,
+            "imageUrl": null,
+            "name": null,
+            "price": null,
+            "ordernumbers": ["0012BLUB-42-A"],
+            "matchingOrdernumber": "",
+            "score": 0,
+            "summary": null,
+            "properties": {},
+            "attributes": {}
           }
         ]
       }

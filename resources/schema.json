@@ -245,7 +245,7 @@
       ]
     },
     "parentItem": {
-      "description": "Top level product. In case the service supports variants, this may contain children. Without variant support, this is just a regular item.",
+      "description": "Top level item. In case the service supports variants, this may contain variants. Without variant support, this is just a regular item.",
       "allOf": [
         {"$ref":  "#/definitions/baseItem"},
         {
@@ -290,17 +290,17 @@
               },
               "description": "In one or more Push Rules match a product, these are the names."
             },
-            "children": {
+            "variants": {
               "type": "array",
-              "items": {"$ref": "#/definitions/childItem"}
+              "items": {"$ref": "#/definitions/variantItem"}
             }
           },
           "required": ["name", "price", "summary", "url", "imageUrl", "highlightedName", "productPlacement", "pushRules"]
         }
       ]
     },
-    "childItem": {
-      "description": "Child item of a parent in case variants are supported by the service.",
+    "variantItem": {
+      "description": "Variant item of a parent in case variants are supported by the service.",
       "allOf": [
         {"$ref":  "#/definitions/baseItem"},
         {

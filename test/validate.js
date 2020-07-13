@@ -1,8 +1,10 @@
 const Validator = require('jsonschema').Validator;
-const fs = require('fs').promises;
+const fs = require('fs');
+const exampleFolderPath = __dirname + '/../example/';
+const schemaPath = __dirname + '/../resources/schema.json';
 
 async function parseJsonWithErrorHandling(path) {
-    const rawBuffer = await fs.readFile(path);
+    const rawBuffer = await fs.promises.readFile(path);
 
     try {
         return JSON.parse(rawBuffer.toString('utf8'));
@@ -15,8 +17,8 @@ async function parseJsonWithErrorHandling(path) {
 async function validateFile(fileName) {
     const validator = new Validator();
 
-    const instance = await parseJsonWithErrorHandling(__dirname + '/../example/' + fileName);
-    const schema = await parseJsonWithErrorHandling(__dirname + '/../resources/schema.json');
+    const instance = await parseJsonWithErrorHandling(exampleFolderPath + fileName);
+    const schema = await parseJsonWithErrorHandling(schemaPath);
 
     const result = validator.validate(instance, schema);
 
@@ -33,8 +35,10 @@ async function validateFile(fileName) {
     }
 }
 
-async function main() {
-    ['response.json', 'responseWithVariants.json'].forEach(fileName => validateFile(fileName));
+function main() {
+    fs.readdir(exampleFolderPath, (err, files) => {
+        files.forEach(fileName => validateFile(fileName));
+    });
 }
 
 main();

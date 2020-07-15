@@ -9,7 +9,7 @@
       "properties": {
         "value": {
           "description": "The filter value, as selected or suitable for visualization.",
-          "type": ["string", "object"],
+          "type": ["string", "object", "number"],
           "minLength": 1
         },
         "min": {
@@ -179,7 +179,7 @@
     },
     "requiredUrl": {
       "type": "string",
-      "pattern": "^https?://.*$"
+      "pattern": "^(https?:\/\/.*|)$"
     },
     "nullableUrl": {
       "type": ["string", "null"],

@@ -179,7 +179,7 @@
     },
     "requiredUrl": {
       "type": "string",
-      "pattern": "^(https?:\/\/.*|)$"
+      "pattern": "^(https?://.*)?$"
     },
     "nullableUrl": {
       "type": ["string", "null"],

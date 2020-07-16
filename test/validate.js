@@ -1,8 +1,10 @@
 const Validator = require('jsonschema').Validator;
-const fs = require('fs').promises;
+const fs = require('fs');
+const exampleFolderPath = __dirname + '/../example/';
+const schemaPath = __dirname + '/../resources/schema.json';
 
 async function parseJsonWithErrorHandling(path) {
-    const rawBuffer = await fs.readFile(path);
+    const rawBuffer = await fs.promises.readFile(path);
 
     try {
         return JSON.parse(rawBuffer.toString('utf8'));
@@ -12,16 +14,16 @@ async function parseJsonWithErrorHandling(path) {
     }
 }
 
-async function main() {
+async function validateFile(fileName) {
     const validator = new Validator();
 
-    const instance = await parseJsonWithErrorHandling(__dirname + '/../example/response.json');
-    const schema = await parseJsonWithErrorHandling(__dirname + '/../resources/schema.json');
+    const instance = await parseJsonWithErrorHandling(exampleFolderPath + fileName);
+    const schema = await parseJsonWithErrorHandling(schemaPath);
 
     const result = validator.validate(instance, schema);
 
     if (!result.valid) {
-        console.error('Schema or example are not valid. Errors:');
+        console.error(fileName + ': Schema or example are not valid. Errors:');
 
         result.errors.forEach((error) => {
             console.error(error.property + ' ' + error.message);
@@ -29,8 +31,14 @@ async function main() {
 
         process.exit(1);
     } else {
-        console.log('Schema and example are valid.');
+        console.log(fileName + ': Schema and example are valid.');
     }
+}
+
+function main() {
+    fs.readdir(exampleFolderPath, (err, files) => {
+        files.forEach(fileName => validateFile(fileName));
+    });
 }
 
 main();

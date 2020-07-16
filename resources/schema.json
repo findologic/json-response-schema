@@ -9,7 +9,7 @@
       "properties": {
         "value": {
           "description": "The filter value, as selected or suitable for visualization.",
-          "type": ["string", "object"],
+          "type": ["string", "object", "number"],
           "minLength": 1
         },
         "min": {
@@ -175,6 +175,161 @@
         "name",
         "displayName",
         "type"
+      ]
+    },
+    "requiredUrl": {
+      "type": "string",
+      "pattern": "^(https?://.*)?$"
+    },
+    "nullableUrl": {
+      "type": ["string", "null"],
+      "pattern": "^https?://.*$"
+    },
+    "baseItem": {
+      "description": "Properties shared by parent- and child items.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Item ID, as exported.",
+          "type": "string",
+          "minLength": 1
+        },
+        "ordernumbers": {
+          "description": "The item's ordernumbers. Currently, only the first exported one is available.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "matchingOrdernumber": {
+          "type": "string",
+          "minLength": 0
+        },
+        "score": {
+          "description": "Search score.",
+          "type": "number",
+          "min": 0
+        },
+        "properties": {
+          "description": "Non-searchable value exported as properties. Includes additional images, if applicable. The desired values have to be requested with the 'properties[]' parameter.",
+          "type": "object",
+          "properties": {
+            ".*": {
+              "type": "string"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "description": "Attribute values that apply to an item, if the attribute was requested via outputAttrib.",
+          "patternProperties": {
+            "^.*$": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minLength": 0
+            }
+          }
+        }
+      },
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "score",
+        "ordernumbers",
+        "matchingOrdernumber",
+        "properties",
+        "attributes"
+      ]
+    },
+    "parentItem": {
+      "description": "Top level item. In case the service supports variants, this may contain variants. Without variant support, this is just a regular item.",
+      "allOf": [
+        {"$ref":  "#/definitions/baseItem"},
+        {
+          "properties": {
+            "name": {
+              "description": "Name of the item without any query-based highlighting.",
+              "type": "string",
+              "minLength": 0
+            },
+            "price": {
+              "description": "The item's price.",
+              "type": "number"
+            },
+            "summary": {
+              "description": "Exported short summary.",
+              "type": "string",
+              "minLength": 0
+            },
+            "url": {
+              "description": "Detail page URL.",
+              "$ref": "#/definitions/requiredUrl"
+            },
+            "imageUrl": {
+              "description": "Primary image URL. Additionally exported images can be accessed via the item's properties.",
+              "$ref": "#/definitions/requiredUrl"
+            },
+            "highlightedName": {
+              "description": "Name of the item with portions of it highlighted if matching the query. The matching part is wrapped in a <span class=\"flEmphasis\"> tag.",
+              "type": "string",
+              "minLength": 0
+            },
+            "productPlacement": {
+              "type": ["string", "null"],
+              "minLength": 1,
+              "description": "In case a Product Placement matches the product, this is its name."
+            },
+            "pushRules": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": "In one or more Push Rules match a product, these are the names."
+            },
+            "variants": {
+              "type": "array",
+              "items": {"$ref": "#/definitions/variantItem"}
+            }
+          },
+          "required": ["name", "price", "summary", "url", "imageUrl", "highlightedName", "productPlacement", "pushRules"]
+        }
+      ]
+    },
+    "variantItem": {
+      "description": "Variant item of a parent in case variants are supported by the service.",
+      "allOf": [
+        {"$ref":  "#/definitions/baseItem"},
+        {
+          "properties": {
+            "name": {
+              "description": "Name of the item without any query-based highlighting.",
+              "type": ["string", "null"],
+              "minLength": 0
+            },
+            "price": {
+              "description": "The item's price.",
+              "type": ["number", "null"]
+            },
+            "summary": {
+              "description": "Exported short summary.",
+              "type": ["string", "null"],
+              "minLength": 0
+            },
+            "url": {
+              "description": "Detail page URL.",
+              "$ref": "#/definitions/nullableUrl"
+            },
+            "imageUrl": {
+              "description": "Primary image URL. Additionally exported images can be accessed via the item's properties.",
+              "$ref": "#/definitions/nullableUrl"
+            }
+          },
+          "required": ["name", "price", "summary", "url", "imageUrl"]
+        }
       ]
     }
   },
@@ -380,114 +535,7 @@
           "description": "The matching items, constraint by the pagination parameters. The values being shown respect the specified usergroup, if applicable.",
           "type": "array",
           "minLength": 0,
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Item ID, as exported.",
-                "type": "string",
-                "minLength": 1
-              },
-              "url": {
-                "description": "Detail page URL.",
-                "type": "string",
-                "pattern": "^https?://.*$"
-              },
-              "imageUrl": {
-                "description": "Primary image URL. Additionally exported images can be accessed via the item's properties.",
-                "type": "string",
-                "pattern": "^https?://.*$"
-              },
-              "name": {
-                "description": "Name of the item without any query-based highlighting.",
-                "type": "string",
-                "minLength": 0
-              },
-              "highlightedName": {
-                "description": "Name of the item with portions of it highlighted if matching the query. The matching part is wrapped in a <span class=\"flEmphasis\"> tag.",
-                "type": "string",
-                "minLength": 0
-              },
-              "price": {
-                "description": "The item's price.",
-                "type": "number"
-              },
-              "ordernumbers": {
-                "description": "The item's ordernumbers. Currently, only the first exported one is available.",
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "matchingOrdernumber": {
-                "type": "string",
-                "minLength": 0
-              },
-              "score": {
-                "description": "Search score.",
-                "type": "number",
-                "min": 0
-              },
-              "summary": {
-                "description": "Exported short summary.",
-                "type": "string",
-                "minLength": 0
-              },
-              "properties": {
-                "description": "Non-searchable value exported as properties. Includes additional images, if applicable. The desired values have to be requested with the 'properties[]' parameter.",
-                "type": "object",
-                "properties": {
-                  ".*": {
-                    "type": "string"
-                  }
-                }
-              },
-              "productPlacement": {
-                "type": ["string", "null"],
-                "minLength": 1,
-                "description": "In case a Product Placement matches the product, this is its name."
-              },
-              "pushRules": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "description": "In one or more Push Rules match a product, these are the names."
-              },
-              "attributes": {
-                "type": "object",
-                "description": "Attribute values that apply to an item, if the attribute was requested via outputAttrib.",
-                "patternProperties": {
-                  "^.*$": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "minLength": 0
-                  }
-                }
-              }
-            },
-            "additionalProperties": false,
-            "required": [
-              "id",
-              "score",
-              "url",
-              "name",
-              "highlightedName",
-              "ordernumbers",
-              "matchingOrdernumber",
-              "summary",
-              "price",
-              "properties",
-              "productPlacement",
-              "pushRules",
-              "attributes",
-              "imageUrl"
-            ]
-          }
+          "items": {"$ref":  "#/definitions/parentItem"}
         },
         "filters": {
           "description": "Filters available based on the query, and as configured in the filter configuration. Does not include inactive filters.",

@@ -1,0 +1,182 @@
+{
+  "request": {
+    "query": "Blubergurken",
+    "first": 0,
+    "count": 24,
+    "serviceId": "F53ABAB42D7931BE13532AFCA1A95CCE",
+    "usergroup": "foo",
+    "userId": "cd7984ec-e0c5-4bfb-a925-d607668153cd",
+    "order": {
+      "field": "salesfrequency",
+      "relevanceBased": true,
+      "direction": "DESC"
+    }
+  },
+  "result": {
+    "metadata": {
+      "effectiveQuery": "Blubbergurken",
+      "totalResults": 1337,
+      "requestId": "9cd42225-90d0-4858-bcb6-b05f33d8ec5e",
+      "searchConcept": "Seeds",
+      "currencySymbol": "€",
+      "landingpage": {
+        "name": "New arrivals",
+        "url": "https://example.org/new_stuff.html"
+      },
+      "promotion": {
+        "name": "Blubbergurken Brand",
+        "url": "https://example.org/top_brands/Blubbergurken_International_Inc.html",
+        "imageUrl": "https://example.org/top_brands/blubbergurken_international.png"
+      }
+    },
+    "variant": {
+      "name": "sdym",
+      "correctedQuery": "Blubbergurken"
+    },
+    "items": [
+      {
+        "id": "123ab",
+        "url": "https://example.org/product.html",
+        "imageUrl": "https://example.org/product.png",
+        "name": "Blubbergurken Seeds",
+        "highlightedName": "<span class=\"flEmphasis\">Blubbergurken</span> Seeds",
+        "price": 13.37,
+        "ordernumbers": ["0012BLUB-42"],
+        "matchingOrdernumber": "34567",
+        "score": 4.667,
+        "summary": "These are some very nice seeds.",
+        "properties": {
+          "overriddenPrice": "15.00",
+          "taxRate": "20"
+        },
+        "productPlacement": "Seeds spring 2020",
+        "pushRules": [
+          "Seeds",
+          "Cucumbers"
+        ],
+        "attributes": {
+          "cat": [
+            "Gardening"
+          ],
+          "vendor": [
+            "Blubbergurken International Inc."
+          ]
+        },
+        "variants": [
+          {
+            "id": "123ab-A",
+            "url": "https://example.org/product-a.html",
+            "imageUrl": "https://example.org/product-a.png",
+            "name": "Blubbergurken Seeds - Class A",
+            "price": 15.00,
+            "ordernumbers": ["0012BLUB-42-A"],
+            "matchingOrdernumber": "",
+            "score": 4.667,
+            "summary": "These are some very nice seeds.",
+            "properties": {
+              "overriddenPrice": "15.00",
+              "taxRate": "20"
+            },
+            "attributes": {
+              "cat": [
+                "Gardening"
+              ],
+              "vendor": [
+                "Blubbergurken International Inc."
+              ]
+            }
+          },
+          {
+            "id": "123ab-A",
+            "url": null,
+            "imageUrl": null,
+            "name": null,
+            "price": null,
+            "ordernumbers": ["0012BLUB-42-A"],
+            "matchingOrdernumber": "",
+            "score": 0,
+            "summary": null,
+            "properties": {},
+            "attributes": {}
+          }
+        ]
+      }
+    ],
+    "filters": {
+      "main": [
+        {
+          "name": "cat",
+          "displayName": "Category",
+          "type": "select",
+          "selectMode": "single",
+          "values": [
+            {
+              "displayName": "Spring",
+              "value": "Gardening_Spring",
+              "weight": 1.2,
+              "frequency": 13
+            }
+          ],
+          "pinnedFilterValueCount": 6
+        },
+        {
+          "type": "range-slider",
+          "totalRange": {
+            "min": 2.37,
+            "max": 10106.09
+          },
+          "selectedRange": {
+            "min": 2.37,
+            "max": 10106.09
+          },
+          "stepSize": 0.1,
+          "unit": "€",
+          "name": "price",
+          "displayName": "Preis",
+          "selectMode": "single",
+          "values": [
+            {
+              "value": {
+                "min": 2.37,
+                "max": 30.75
+              },
+              "weight": 0.3948,
+              "frequency": null
+            }
+          ]
+        },
+        {
+          "name": "vendor",
+          "displayName": "Brand",
+          "type": "select",
+          "selectMode": "multiple",
+          "noAvailableFiltersText": "Sorry, no more filters for you!",
+          "values": [
+            {
+              "value": "Blubbergurken International Inc.",
+              "weight": 0.8,
+              "frequency": 5,
+              "selected": true,
+              "frequencyType" : "additive"
+            }
+          ]
+        }
+      ],
+      "other": [
+        {
+          "name": "color",
+          "displayName": "Color",
+          "type": "color",
+          "selectMode": "multiple",
+          "cssClass": "my-colors",
+          "values": [
+            {
+              "value": "Green",
+              "color": "#00FF00"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

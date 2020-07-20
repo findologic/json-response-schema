@@ -91,7 +91,7 @@
             "url": null,
             "imageUrl": null,
             "name": null,
-            "price": null,
+            "price": 0.0,
             "ordernumbers": ["0012BLUB-42-A"],
             "matchingOrdernumber": "",
             "score": 0,

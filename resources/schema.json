@@ -312,7 +312,7 @@
             },
             "price": {
               "description": "The item's price.",
-              "type": ["number", "null"]
+              "type": "number"
             },
             "summary": {
               "description": "Exported short summary.",

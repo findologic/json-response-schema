@@ -477,9 +477,9 @@
                   "minLength": 1
                 },
                 "url": {
-                  "description": "URL of the page the promotion image should link to.",
+                  "description": "URL or absolute path of the page the promotion image should link to.",
                   "type": "string",
-                  "pattern": "^https?://.*$"
+                  "pattern": "^(https?://|/).*$"
                 },
                 "imageUrl": {
                   "description": "URL of the image to use for displaying the promotion.",

@@ -459,9 +459,9 @@
                   "minLength": 1
                 },
                 "url": {
-                  "description": "URL of the Landingpage, which should be either redirected to, or offered to the user as a link.",
+                  "description": "URL or absolute path of the Landingpage, which should be either redirected to, or offered to the user as a link.",
                   "type": "string",
-                  "pattern": "^https?://.*$"
+                  "pattern": "^(https?://|/).*$"
                 }
               },
               "additionalProperties": false,

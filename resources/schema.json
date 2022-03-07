@@ -110,7 +110,7 @@
         "values": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/filterMetadata"
+            "$schema": "#/definitions/filterMetadata"
           }
         },
         "pinnedFilterValueCount": {
@@ -247,7 +247,7 @@
     "parentItem": {
       "description": "Top level item. In case the service supports variants, this may contain variants. Without variant support, this is just a regular item.",
       "allOf": [
-        {"$ref":  "#/definitions/baseItem"},
+        {"$schema":  "#/definitions/baseItem"},
         {
           "properties": {
             "name": {
@@ -266,11 +266,11 @@
             },
             "url": {
               "description": "Detail page URL.",
-              "$ref": "#/definitions/requiredUrl"
+              "$schema": "#/definitions/requiredUrl"
             },
             "imageUrl": {
               "description": "Primary image URL. Additionally exported images can be accessed via the item's properties.",
-              "$ref": "#/definitions/requiredUrl"
+              "$schema": "#/definitions/requiredUrl"
             },
             "highlightedName": {
               "description": "Name of the item with portions of it highlighted if matching the query. The matching part is wrapped in a <span class=\"flEmphasis\"> tag.",
@@ -292,7 +292,7 @@
             },
             "variants": {
               "type": "array",
-              "items": {"$ref": "#/definitions/variantItem"}
+              "items": {"$schema": "#/definitions/variantItem"}
             }
           },
           "required": ["name", "price", "summary", "url", "imageUrl", "highlightedName", "productPlacement", "pushRules"]
@@ -302,7 +302,7 @@
     "variantItem": {
       "description": "Variant item of a parent in case variants are supported by the service.",
       "allOf": [
-        {"$ref":  "#/definitions/baseItem"},
+        {"$schema":  "#/definitions/baseItem"},
         {
           "properties": {
             "name": {
@@ -321,11 +321,11 @@
             },
             "url": {
               "description": "Detail page URL.",
-              "$ref": "#/definitions/nullableUrl"
+              "$schema": "#/definitions/nullableUrl"
             },
             "imageUrl": {
               "description": "Primary image URL. Additionally exported images can be accessed via the item's properties.",
-              "$ref": "#/definitions/nullableUrl"
+              "$schema": "#/definitions/nullableUrl"
             }
           },
           "required": ["name", "price", "summary", "url", "imageUrl"]
@@ -535,7 +535,7 @@
           "description": "The matching items, constraint by the pagination parameters. The values being shown respect the specified usergroup, if applicable.",
           "type": "array",
           "minLength": 0,
-          "items": {"$ref":  "#/definitions/parentItem"}
+          "items": {"$schema":  "#/definitions/parentItem"}
         },
         "filters": {
           "description": "Filters available based on the query, and as configured in the filter configuration. Does not include inactive filters.",
@@ -545,14 +545,14 @@
               "description": "Filters configured for primary visibility.",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/filter"
+                "$schema": "#/definitions/filter"
               }
             },
             "other": {
               "description": "Filters configured for secondary visibility. Should be initially hidden or collapsed.",
               "type": "array",
               "items": {
-                "$ref": "#/definitions/filter"
+                "$schema": "#/definitions/filter"
               }
             }
           },

@@ -290,6 +290,10 @@
               },
               "description": "In one or more Push Rules match a product, these are the names."
             },
+            "variantScoresIdentical": {
+              "description": "Indicates whether all variants of this product have the same score.",
+              "type": "boolean"
+            },
             "variants": {
               "type": "array",
               "items": {"$ref": "#/definitions/variantItem"}

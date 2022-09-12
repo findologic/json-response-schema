@@ -290,6 +290,10 @@
               },
               "description": "In one or more Push Rules match a product, these are the names."
             },
+            "bestVariant": {
+              "description": "ID of the variant that best matches the user query. null if there is no clear best match.",
+              "type": ["string", "null"]
+            },
             "variants": {
               "type": "array",
               "items": {"$ref": "#/definitions/variantItem"}
